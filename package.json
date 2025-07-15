@@ -1,0 +1,23 @@
+{
+  "name": "playwright_orange_hrm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gapy-1992/playwright_orange_hrm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/gapy-1992/playwright_orange_hrm/issues"
+  },
+  "homepage": "https://github.com/gapy-1992/playwright_orange_hrm#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.0.14"
+  }
+}
