@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "UI": "npx playwright test --headed",
+    "headless": "npx"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gapy-1992/playwright_orange_hrm.git"
