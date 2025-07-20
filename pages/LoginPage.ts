@@ -1,10 +1,15 @@
+import { locatorProcessor } from "../utils/LocatorProcessor";
 import { BasePage } from "./BasePage";
 
 export class LoginPage extends BasePage {
-    //locator define here 
+    private userNameTxtLoc = 'placeholder="Username"';
+    private pwdTxtLoc = 'placeholder="Password"';
+    private loginBtnLoc = '.orangehrm-login-button';
 
-    // // Login with account
-    // function loginTo(userName: string, password: string) {
+    async login(userName, password) {
 
-    // } 
+        await this.fill(this.userNameTxtLoc, 'Admin');
+        await this.fill(this.pwdTxtLoc, 'admin123');
+        await this.click(this.loginBtnLoc);
+    }
 }

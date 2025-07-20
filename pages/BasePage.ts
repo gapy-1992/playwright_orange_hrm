@@ -1,4 +1,5 @@
 import { Page } from "@playwright/test";
+import { locatorProcessor } from "../utils/LocatorProcessor";
 
 export class BasePage {
     readonly page; //
@@ -10,11 +11,15 @@ export class BasePage {
         await this.page.goto(url);
     }
 
-    async waitForElement(selector: string, timeout: number = 30000) {
-        await this.page.waitForSelector(selector, { state: 'visible', timeout });
+    async getText(selector: string): Promise<string> {
+        return (await locatorProcessor(selector, this.page)).innerText();
     }
 
-    async getText(selector: string): Promise<string> {
-        return this.page.locator(selector).innerText();
+    async click(selector: string) {
+        return (await locatorProcessor(selector, this.page)).click();
+    }
+
+    async fill(selector: string, text: string) {
+        return (await locatorProcessor(selector, this.page)).fill(text);
     }
 }

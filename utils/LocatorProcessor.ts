@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-
+import { ElementHandle } from "@playwright/test";
 /**
  *  return Locator base on prefix:
  * - 'title'  → page.getByTitle(value)
@@ -28,16 +28,23 @@ export async function locatorProcessor(locator: string, page: Page) {
     try {
         switch (prefix) {
             case 'title':
-                return await page.getByTitle(locatorName);
-
+                const titleElement = await page.getByTitle(locatorName);
+                await titleElement.waitFor({ state: 'visible' });
+                return titleElement;
             case 'alt':
-                return await page.getByAltText(locatorName);
+                const altElement = await page.getByAltText(locatorName);
+                await altElement.waitFor({ state: 'visible' });
+                return altElement
 
             case 'placeholder':
-                return await page.getByPlaceholder(locatorName);
+                const placeHolderElement = await page.getByPlaceholder(locatorName);
+                await placeHolderElement.waitFor({ state: 'visible' });
+                return placeHolderElement;
 
             default:
-                return await page.locator(locator);
+                const defaultElement = await await page.locator(locator);
+                await defaultElement.waitFor({ state: 'visible' })
+                return defaultElement;
         }
     } catch (error) {
         throw new Error(`Failed to process locator: ${locator}. Please check the locator syntax or format.`);
