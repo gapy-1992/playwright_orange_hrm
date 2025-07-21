@@ -1,12 +1,11 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+import { test } from '../fixtures/baseFixtures.ts';
 
 
-test('', async ({ page }) => {
+test('', async ({
+  page,
+  loginPage }) => {
   await page.goto('/'); // Uses the baseURL from playwright.config.ts
   await page.waitForLoadState('domcontentloaded');
 
-  const LoginInstance = new LoginPage(page);
-  await LoginInstance.login('Admin', 'admin123');
-
+  await loginPage.login('Admin', 'admin123');
 })
