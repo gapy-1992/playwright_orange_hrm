@@ -1,14 +1,21 @@
-import { locatorProcessor } from "../utils/LocatorProcessor";
-import { BasePage } from "./BasePage";
+import { Locator, Page } from "@playwright/test";
 
-export class LoginPage extends BasePage {
-    private userNameTxtLoc = 'placeholder="Username"';
-    private pwdTxtLoc = 'placeholder="Password"';
-    private loginBtnLoc = '.orangehrm-login-button';
-    readonly
-    async login(userName, password) {
-        await this.fill(this.userNameTxtLoc, userName);
-        await this.fill(this.pwdTxtLoc, password);
-        await this.click(this.loginBtnLoc);
+export class LoginPage {
+    private pwdTxt: Locator;
+    private loginBtn: Locator;
+    private userNameTxt: Locator;
+    readonly page: Page;
+
+    constructor(page: Page) {
+        this.page = page;
+        this.userNameTxt = page.getByPlaceholder('Username')
+        this.pwdTxt = page.getByPlaceholder('Password');
+        this.loginBtn = page.locator('.orangehrm-login-button');
     }
+    async login(userName, password) {
+        await this.userNameTxt.fill(userName);
+        await this.pwdTxt.fill(password);
+        await this.loginBtn.click();
+    }
+
 }
