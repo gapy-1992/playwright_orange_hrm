@@ -1,6 +1,7 @@
-import { BasePage } from "./BasePage";
+import { expect, type Locator, type Page } from '@playwright/test';
+import { LeftHandSideMenu } from './LeftHandSideMenu';
+export class Dashboard {
+    readonly page;
 
-export class Dashboard extends BasePage {
-    private adminBtnLoc = "oxd-main-menu-item--name";
 
 }
