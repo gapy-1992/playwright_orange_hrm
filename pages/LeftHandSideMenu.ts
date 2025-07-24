@@ -23,7 +23,7 @@ export class LeftHandSideMenu {
         ];
 
         this.navBtns = buttonNames.reduce((buttons, btnName) => {
-            buttons[btnName] = page.getByRole('link', { name: btnName })
+            buttons[btnName] = page.getByRole('link', { name: btnName, exact: true })
             return buttons;
         }, {} as Record<string, Locator>)
     }
